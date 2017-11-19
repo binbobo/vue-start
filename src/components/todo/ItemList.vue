@@ -8,6 +8,7 @@
 
 <script>
 import Item from './Item'
+import {removeTask} from '../../services/todo'
 
 export default {
   name: 'ItemList',
@@ -21,13 +22,7 @@ export default {
 
   methods: {
     removeItem (id) {
-      let index = this.items.findIndex(function (item) {
-        return item.id === id
-      })
-
-      if (index !== -1) {
-        this.items.splice(index, 1)
-      }
+      removeTask(id)
     }
   },
 

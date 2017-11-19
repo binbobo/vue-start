@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import ToDo from '@/components/todo/ToDo'
+import Todo from '@/components/todo/ToDo'
 
 Vue.use(Router)
 
@@ -14,8 +14,8 @@ export default new Router({
     },
     {
       path: '/todo',
-      name: 'ToDo',
-      component: ToDo
+      name: 'Todo',
+      component: Todo
     }
   ]
 })

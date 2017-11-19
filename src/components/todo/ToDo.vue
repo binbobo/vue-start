@@ -1,34 +1,45 @@
 <template>
   <div class="todo-container">
     <h1 class="todo-header">todos</h1>
-    <add-item :items="items"></add-item>
+    <add-item :items="items" @addItem="updateItems"></add-item>
     <item-list :items='items'></item-list>
+    <todo-footer @filterTaskByType="filterTaskByType" @clearCompletedTasks="updateItems" :items="items"></todo-footer>
   </div>
 </template>
 
 <script>
 import AddItem from './AddItem'
 import ItemList from './ItemList'
+import TodoFooter from './TodoFooter'
+import {getTasks, getTaskByType} from '../../services/todo'
 
 export default {
-  name: 'ToDo',
+  name: 'Todo',
 
   data () {
     return {
-      items: [
-        {id: '1', itemName: 'vue', completed: false},
-        {id: '2', itemName: 'angularjs', completed: true},
-        {id: '3', itemName: 'react', completed: false}
-      ]
+      items: []
     }
   },
 
+  mounted () {
+    this.items = getTasks()
+  },
+
   methods: {
+    updateItems () {
+      this.items = getTasks()
+    },
+
+    filterTaskByType (type) {
+      this.items = getTaskByType(type)
+    }
   },
 
   components: {
     AddItem,
-    ItemList
+    ItemList,
+    TodoFooter
   }
 }
 </script>
@@ -37,7 +48,7 @@ export default {
 .todo-container {
   width: 75%;
   margin: 0 auto;
-  min-width: 300px;
+  min-width: 535px;
   overflow: hidden;
 }
 

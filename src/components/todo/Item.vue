@@ -1,7 +1,7 @@
 <template>
   <li class="single-item">
       <label :for="item.id" :class="{'task-completed': item.completed}">
-        <input type="checkbox" :id="item.id" v-model="item.completed" />
+        <input type="checkbox" :id="item.id" v-model="item.completed" @change="toggleCompleted" />
         {{ item.itemName }}
       </label>
       <i class="close-x" @click="onRemove">x</i>
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import {updateTask} from '../../services/todo'
+
 export default {
   name: 'Item',
 
@@ -22,6 +24,10 @@ export default {
   methods: {
     onRemove () {
       this.$emit('removeItem', this.item.id)
+    },
+
+    toggleCompleted () {
+      updateTask(this.item.id, this.item)
     }
   }
 }
@@ -44,14 +50,15 @@ export default {
     }
   }
 
-  label input {
-    &[type='checkbox'] {
-      margin-right: 12px;
-    }
-
-    &.task-completed {
-      text-decoration: line-through;
-    }
+  label {
+     &.task-completed {
+        text-decoration: line-through;
+      }
+     input {
+      &[type='checkbox'] {
+        margin-right: 12px;
+      }
+     }
   }
 }
 

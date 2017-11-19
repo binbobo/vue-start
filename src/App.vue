@@ -6,7 +6,7 @@
           <router-link :to="{path: '/'}">HelloWorld</router-link>
         </li>
         <li> 
-          <router-link to="ToDo">ToDo</router-link>
+          <router-link to="Todo">Todo</router-link>
         </li>
       </ul>
     </nav>
@@ -27,12 +27,12 @@ export default {
 ul {
   list-style-type: none;
   width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
 }
 a {
   text-decoration: none;
+  color: #777;
 }
 </style>
 

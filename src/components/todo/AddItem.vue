@@ -1,7 +1,7 @@
 <template>
   <div class="add-item">
     <form autocomplete="off" class="add-item-form"> 
-      <input autofocus v-model="itemName" v-validate="'required'" type="text" name="itemName" placeholder="input item name here"> 
+      <input v-model="itemName" v-validate="'required'" type="text" name="itemName" placeholder="input item name here"> 
       <p v-show="errors.has('itemName')" class="invalid-field">{{ errors.first('itemName') }}</p>
       <button type="submit" @click.prevent="addNewTask()">Add New Item</button>
     </form>
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import {addTask} from '../../services/todo'
+
 export default {
   name: 'AddItem',
 
@@ -17,8 +19,6 @@ export default {
       itemName: ''
     }
   },
-
-  props: ['items'],
 
   methods: {
     addNewTask () {
@@ -30,11 +30,13 @@ export default {
 
       // add new task
       // how to access parent's data items? 1. custome event(value) 2. referemce type
-      this.items.push({
-        id: (this.items.length).toString(),
+      addTask({
+        id: this.itemName + '-' + new Date().getTime,
         itemName: this.itemName,
         completed: false
       })
+
+      this.$emit('addItem')
     },
 
     validateForm () {
