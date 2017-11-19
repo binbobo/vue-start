@@ -26,8 +26,12 @@ export function updateTask (id, newTask) {
   }
 }
 
-export function updateTasks (tasks) {
-  localStorage.setItem('taskData', JSON.stringify(tasks))
+export function removeCompletedTasks () {
+  let existTaskData = getExistTaskData()
+  let activeData = existTaskData.filter(function (item) {
+    return !item.completed
+  })
+  localStorage.setItem('taskData', JSON.stringify(activeData))
 }
 
 export function getTasks () {

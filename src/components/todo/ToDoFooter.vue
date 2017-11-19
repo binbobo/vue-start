@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import {updateTasks} from '../../services/todo'
+import {removeCompletedTasks} from '../../services/todo'
 
 export default {
   name: 'TodoFooter',
@@ -70,9 +70,8 @@ export default {
 
     clearCompleted () {
       // how to remove multi elements from array ?
-      console.log(this.getActive(), this.items)
-      // updateTasks(this.getActive())
-      // this.$emit('clearCompletedTasks')
+      removeCompletedTasks()
+      this.$emit('clearCompletedTasks')
     },
 
     getCompleted () {

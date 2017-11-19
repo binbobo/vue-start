@@ -31,7 +31,7 @@ export default {
       // add new task
       // how to access parent's data items? 1. custome event(value) 2. referemce type
       addTask({
-        id: this.itemName + '-' + new Date().getTime,
+        id: this.itemName + '-' + new Date().getTime(),
         itemName: this.itemName,
         completed: false
       })

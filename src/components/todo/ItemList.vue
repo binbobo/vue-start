@@ -23,6 +23,7 @@ export default {
   methods: {
     removeItem (id) {
       removeTask(id)
+      this.$emit('removeItem')
     }
   },
 

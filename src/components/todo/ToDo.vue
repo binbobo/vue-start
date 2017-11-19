@@ -2,7 +2,7 @@
   <div class="todo-container">
     <h1 class="todo-header">todos</h1>
     <add-item :items="items" @addItem="updateItems"></add-item>
-    <item-list :items='items'></item-list>
+    <item-list :items='items' @removeItem="updateItems"></item-list>
     <todo-footer @filterTaskByType="filterTaskByType" @clearCompletedTasks="updateItems" :items="items"></todo-footer>
   </div>
 </template>
