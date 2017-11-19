@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .single-item {
   width: 100%;
   height: 40px;
@@ -36,18 +36,23 @@ export default {
   border-bottom: 1px solid #ededed;
 
   position: relative;
-}
 
-.single-item:hover {
-  background: #eeeeee;
-}
+  &:hover {
+    background: #eeeeee;
+    .close-x {
+      display: block;
+    }
+  }
 
-.single-item label input[type='checkbox'] {
-  margin-right: 12px;
-}
+  label input {
+    &[type='checkbox'] {
+      margin-right: 12px;
+    }
 
-.single-item label.task-completed {
-  text-decoration: line-through;
+    &.task-completed {
+      text-decoration: line-through;
+    }
+  }
 }
 
 .close-x {
@@ -59,10 +64,6 @@ export default {
   cursor: pointer;
   font-size: 1.5em;
   font-weight: 200;
-}
-
-.single-item:hover .close-x {
-  display: block;
 }
 </style>
 

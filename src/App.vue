@@ -22,7 +22,7 @@ export default {
 </script>
 
 
-<style>
+<style lang='scss'>
 /* common styles */
 ul {
   list-style-type: none;
@@ -31,10 +31,13 @@ ul {
   margin: 0;
   padding: 0;
 }
+a {
+  text-decoration: none;
+}
 </style>
 
 
-<style>
+<style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -54,34 +57,34 @@ ul {
   left: 0;
 
   text-align: left;
-}
 
-.nav .menu-list {
-  padding-left:24px;
-  border-bottom: 1px solid #fafafa;
-}
+  .menu-list {
+    padding-left:24px;
+    border-bottom: 1px solid #fafafa;
 
-.nav .menu-list li {
-  display: inline-block;
-  margin: auto 3px;
-  line-height: 30px;
-}
+    li {
+      display: inline-block;
+      margin: auto 3px;
+      line-height: 30px;
 
-.nav .menu-list li a {
-  text-decoration: none;
-  color:#777;
-  font-weight: bold;
+      a {
+        color:#777;
+        font-weight: bold;
 
-  display: inline-block;
-  width: 100%;
-  height: 27px;
-}
+        display: inline-block;
+        width: 100%;
+        height: 27px;
 
-.nav .menu-list li a:hover {
-  color:#777;
-}
-.nav .menu-list li a.router-link-exact-active {
-  border-bottom: 3px solid #4285f4;
-  color: #4285f4;
+        &:hover {
+          color:#777;
+        }
+
+        &.router-link-exact-active {
+          border-bottom: 3px solid #4285f4;
+          color: #4285f4;
+        }
+      }
+    }
+  }
 }
 </style>
