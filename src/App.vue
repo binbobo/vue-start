@@ -1,5 +1,15 @@
 <template>
   <div id="app">
+    <nav class="nav">
+      <ul class="menu-list">
+        <li> 
+          <router-link :to="{path: '/'}">HelloWorld</router-link>
+        </li>
+        <li> 
+          <router-link to="Todo">Todo</router-link>
+        </li>
+      </ul>
+    </nav>
     <img src="./assets/logo.png">
     <router-view/>
   </div>
@@ -11,7 +21,23 @@ export default {
 }
 </script>
 
-<style>
+
+<style lang='scss'>
+/* common styles */
+ul {
+  list-style-type: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #777;
+}
+</style>
+
+
+<style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -19,5 +45,46 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+/* 导航菜单样式 */
+.nav {
+  width: 100%;
+  height: 30px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  text-align: left;
+
+  .menu-list {
+    padding-left:24px;
+    border-bottom: 1px solid #fafafa;
+
+    li {
+      display: inline-block;
+      margin: auto 3px;
+      line-height: 30px;
+
+      a {
+        color:#777;
+        font-weight: bold;
+
+        display: inline-block;
+        width: 100%;
+        height: 27px;
+
+        &:hover {
+          color:#777;
+        }
+
+        &.router-link-exact-active {
+          border-bottom: 3px solid #4285f4;
+          color: #4285f4;
+        }
+      }
+    }
+  }
 }
 </style>
