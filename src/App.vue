@@ -10,7 +10,7 @@
         </li>
       </ul>
     </nav>
-    <img src="./assets/logo.png">
+    <!-- <img src="./assets/logo.png"> -->
     <router-view/>
   </div>
 </template>
@@ -38,19 +38,21 @@ a {
 
 
 <style lang="scss">
+$navHeight: 30px;
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: $navHeight;
 }
 
 /* 导航菜单样式 */
 .nav {
   width: 100%;
-  height: 30px;
+  height: $navHeight;
 
   position: fixed;
   top: 0;

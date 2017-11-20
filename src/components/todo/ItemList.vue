@@ -7,7 +7,7 @@
 
     <!-- task list -->
     <ul>
-      <item v-for="item in shownList" :key="item.id" :item ='item' @removeItem="removeItem"></item>
+      <item v-for="item in computedList" :key="item.id" :item ='item' @removeItem="removeItem"></item>
     </ul>
 
     <!-- task footer -->
@@ -17,9 +17,13 @@
       </div>
       <div class="center">
         <ul>
-          <li v-for="task in tasks" :key="task.type" :status="task" :class="{'active': currentTask.type===task.type}">
-            <a href="" @click.prevent="currentTask = task">{{task.text}}</a>
-          </li>
+          
+            <li v-for="task in tasks" :key="task.type" :status="task" :class="{'active': currentTask.type===task.type}">
+             <transition name="fade">
+              <a href="" @click.prevent="currentTask = task">{{task.text}}</a>
+              </transition>
+            </li>
+          
         </ul>
       </div>
       <div class="right">
@@ -68,11 +72,11 @@ export default {
       return this.getCompleted().length
     },
 
-    shownList () {
+    computedList () {
       if (this.searchStr !== '') {
         let vm = this
         return this.filterTaskBytype().filter(function (item) {
-          return item.itemName.indexOf(vm.searchStr) > -1
+          return item.itemName.toLowerCase().indexOf(vm.searchStr.toLowerCase()) > -1
         })
       }
       return this.filterTaskBytype()
@@ -124,7 +128,7 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style scoped>
 .item-list {
   width: 100%;
   max-height: 350px;
@@ -156,15 +160,21 @@ $height: 40px;
     width: $sideWidth;
   }
 
-   .center {
+  .center {
     > ul {
       > li {
         display: inline-block;
         margin: auto 6px;
         padding: 3px 7px;
 
-        &.active {
+        transition: background-color 0.3s ease-out, opacity .5s ease-out;
+        background-color:white;
+        opacity: 1;
+
+        &.active, &:hover {
           border: 1px solid greenyellow;
+          background-color: #eee;
+          opacity: 0.6;
         }
       }
     }
@@ -182,5 +192,8 @@ $height: 40px;
 }
 </style>
 
+<style lang="scss" scoped>
+
+</style>
 
 
