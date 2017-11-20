@@ -2,16 +2,14 @@
   <div class="todo-container">
     <h1 class="todo-header">todos</h1>
     <add-item :items="items" @addItem="updateItems"></add-item>
-    <item-list :items='items' @removeItem="updateItems"></item-list>
-    <todo-footer @filterTaskByType="filterTaskByType" @clearCompletedTasks="updateItems" :items="items"></todo-footer>
+    <item-list :items='items' @removeItem="updateItems" @clearCompletedTasks="updateItems"></item-list>
   </div>
 </template>
 
 <script>
 import AddItem from './AddItem'
 import ItemList from './ItemList'
-import TodoFooter from './TodoFooter'
-import {getTasks, getTaskByType} from '../../services/todo'
+import {getTasks} from '../../services/todo'
 
 export default {
   name: 'Todo',
@@ -29,17 +27,12 @@ export default {
   methods: {
     updateItems () {
       this.items = getTasks()
-    },
-
-    filterTaskByType (type) {
-      this.items = getTaskByType(type)
     }
   },
 
   components: {
     AddItem,
-    ItemList,
-    TodoFooter
+    ItemList
   }
 }
 </script>

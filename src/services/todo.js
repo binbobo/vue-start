@@ -38,28 +38,12 @@ export function getTasks () {
   return getExistTaskData()
 }
 
-export function getTaskByType (type) {
-  let resTasks = []
-  switch (type) {
-    case '0':
-      resTasks = getExistTaskData()
-      break
-    case '1':
-      resTasks = getExistTaskData().filter(function (item) {
-        return !item.completed
-      })
-      break
-    case '2':
-      resTasks = getExistTaskData().filter(function (item) {
-        return item.completed
-      })
-      break
-    default:
-      resTasks = getExistTaskData()
-      break
-  }
-
-  return resTasks
+export function getTaskTypeData () {
+  return [
+    {type: '0', text: 'all'},
+    {type: '1', text: 'active'},
+    {type: '2', text: 'completed'}
+  ]
 }
 
 export function getTaskByName (name) {
