@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="nav">
+    <!-- <nav class="nav">
       <ul class="menu-list">
         <li> 
           <router-link :to="{path: '/'}">HelloWorld</router-link>
@@ -9,7 +9,7 @@
           <router-link to="Todo">Todo</router-link>
         </li>
       </ul>
-    </nav>
+    </nav> -->
     <!-- <img src="./assets/logo.png"> -->
     <router-view/>
   </div>
