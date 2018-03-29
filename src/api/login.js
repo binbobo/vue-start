@@ -1,11 +1,10 @@
 import {request} from 'api/http'
 
 const baseURL = process.env.API_BASE
-console.log(process.env)
 
 export const register = (userinfo) => {
   return request({
-    url: baseURL + '/api/users/create',
+    url: baseURL + '/api/users/register',
     method: 'post',
     data: userinfo
   })

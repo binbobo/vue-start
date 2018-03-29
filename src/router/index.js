@@ -36,7 +36,7 @@ const router = new Router({
 // route white list
 const whiteList = ['Login', 'Register']
 
-const logined = () => false
+const logined = () => true
 
 // router Guards
 router.beforeEach((to, from, next) => {

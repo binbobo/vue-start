@@ -1,8 +1,7 @@
 <template>
   <div class="add-item">
     <form autocomplete="off" class="add-item-form"> 
-      <input v-model="itemName" v-validate="'required'" type="text" name="itemName" placeholder="input item name here"> 
-      <p v-show="errors.has('itemName')" class="invalid-field">{{ errors.first('itemName') }}</p>
+      <input v-model="itemName" type="text" name="itemName" placeholder="input item name here"> 
       <button type="submit" @click.prevent="addNewTask()">Add New Item</button>
     </form>
   </div>
@@ -45,16 +44,6 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-$color: red;
-
-.invalid-field {
-  margin: 0;
-  text-align: left;
-  color: $color;
-}
-</style>
 
 
 <style lang="scss" scoped>

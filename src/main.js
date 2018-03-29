@@ -3,13 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import VeeValidate from 'vee-validate'
 import lodash from 'lodash'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 Vue.use(iView)
 
-Vue.use(VeeValidate)
 Object.defineProperty(Vue.prototype, '$lodash', { value: lodash })
 
 Vue.config.productionTip = false
