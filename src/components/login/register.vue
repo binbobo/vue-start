@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import {register} from 'api/login'
+
 export default {
   name: 'Register',
   data () {
@@ -43,10 +45,12 @@ export default {
     }
   },
   methods: {
-    handleSubmit(name) {
+    handleSubmit (name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
-          this.$Message.success('Success!');
+          register(this.workForm).then((data) => {
+            this.$Message.success('Success!')
+          })
         } else {
           return false
         }
@@ -57,5 +61,5 @@ export default {
 </script>
 
 <style lang="scss">
- @import 'styles/login.scss';
+ @import 'src/styles/login.scss';
 </style>

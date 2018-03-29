@@ -22,10 +22,12 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
+    // 此处配置的alias只在javascript执行环境下有效
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
       'styles': resolve('src/styles'),
+      'api': resolve('src/api'),
     }
   },
   module: {

@@ -44,10 +44,9 @@ export default {
     }
   },
   methods: {
-    handleSubmit(name) {
+    handleSubmit (name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
-          this.$Message.success('Success!');
         } else {
           return false
         }
@@ -59,5 +58,6 @@ export default {
 
 
 <style lang="scss">
- @import '../../styles/login.scss';
+// 此处不能使用webpack.base.config中配置的alias  因为则不是js执行环境
+@import 'src/styles/login.scss';
 </style>
