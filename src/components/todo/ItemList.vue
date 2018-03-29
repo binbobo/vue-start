@@ -17,17 +17,17 @@
       </div>
       <div class="center">
         <ul>
-          
-            <li v-for="task in tasks" :key="task.type" :status="task" :class="{'active': currentTask.type===task.type}">
-             <transition name="fade">
-              <a href="" @click.prevent="currentTask = task">{{task.text}}</a>
-              </transition>
-            </li>
-          
+          <li v-for="task in tasks" :key="task.type" :status="task" :class="{'active': currentTask.type===task.type}">
+            <transition name="fade">
+            <a href="" @click.prevent="currentTask = task">{{task.text}}</a>
+            </transition>
+          </li>
         </ul>
       </div>
       <div class="right">
-        <button @click="clearCompleted" v-show="hasCompleted">Clear Completed</button>
+        <transition name="fade">
+          <button @click="clearCompleted" v-show="hasCompleted">Clear Completed</button>
+        </transition>
       </div>
     </div>
   </div>
@@ -193,7 +193,14 @@ $height: 40px;
 </style>
 
 <style lang="scss" scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease-out;
+  opacity: 1;
+}
 
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 </style>
 
 
