@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import {login} from 'api/login'
+
 export default {
   name: 'Login',
   data () {
@@ -37,8 +39,7 @@ export default {
           { required: true, message: 'input username', trigger: 'blur' }
         ],
         password: [
-          { required: true, message: 'input password.', trigger: 'blur' },
-          { type: 'string', min: 6, message: 'The password length cannot be less than 6 bits', trigger: 'blur' }
+          { required: true, message: 'input password.', trigger: 'blur' }
         ]
       }
     }
@@ -47,6 +48,10 @@ export default {
     handleSubmit (name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
+          login(this.workForm).then((data) => {
+            this.$Message.success('Success!')
+            this.$router.push({ path: '/' })
+          })
         } else {
           return false
         }

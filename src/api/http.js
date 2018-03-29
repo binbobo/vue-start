@@ -22,6 +22,8 @@ axios.interceptors.response.use(response => {
 
   // 接口返回失败
   if (response.data.success === false) {
+    Message.error(response.data.message)
+
     let {code} = response.data
     // 判断错误代码
     if (typeof code === 'number') {

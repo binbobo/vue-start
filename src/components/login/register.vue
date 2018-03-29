@@ -7,6 +7,16 @@
           <Icon type="ios-person-outline" slot="prepend"></Icon>
         </Input>
       </FormItem>
+      <FormItem prop="password">
+        <Input type="password" v-model="workForm.password" placeholder="Password">
+          <Icon type="unlocked" slot="prepend"></Icon>
+        </Input>
+      </FormItem>
+      <FormItem prop="nickname">
+        <Input type="text" v-model="workForm.nickname" placeholder="Nickname">
+          <Icon type="ios-person-outline" slot="prepend"></Icon>
+        </Input>
+      </FormItem>
       <FormItem prop="email">
         <Input type="email" v-model="workForm.email" placeholder="Email">
           <Icon type="email" slot="prepend"></Icon>
@@ -38,8 +48,8 @@ export default {
         username: [
           { required: true, message: 'input username', trigger: 'blur' }
         ],
-        email: [
-          { required: true, message: 'input email.', trigger: 'blur' }
+        password: [
+          { required: true, message: 'input password.', trigger: 'blur' }
         ]
       }
     }
@@ -50,6 +60,8 @@ export default {
         if (valid) {
           register(this.workForm).then((data) => {
             this.$Message.success('Success!')
+            this.$refs[name].resetFields()
+            this.$router.push({ path: '/login' })
           })
         } else {
           return false

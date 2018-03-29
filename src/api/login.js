@@ -9,3 +9,11 @@ export const register = (userinfo) => {
     data: userinfo
   })
 }
+
+export const login = (userinfo) => {
+  return request({
+    url: baseURL + '/api/users/login',
+    method: 'post',
+    data: userinfo
+  })
+}
