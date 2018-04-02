@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import HelloWorld from '@/components/HelloWorld'
+import HomePage from '@/components/HomePage'
 import Todo from '@/components/todo/ToDo'
 import Login from '@/components/login/login'
 import Register from '@/components/login/register'
@@ -12,8 +12,8 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: HomePage
     },
     {
       path: '/login',
@@ -29,6 +29,11 @@ const router = new Router({
       path: '/todo',
       name: 'Todo',
       component: Todo
+    },
+    // Redirect to the home route if any routes are unmatched
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })
@@ -36,7 +41,7 @@ const router = new Router({
 // route white list
 const whiteList = ['Login', 'Register']
 
-const logined = () => false
+const isLogin = () => !!localStorage.getItem('isLogin')
 
 // router Guards
 router.beforeEach((to, from, next) => {
@@ -44,7 +49,7 @@ router.beforeEach((to, from, next) => {
     next()
   } else {
     // 判断是否登录
-    if (logined()) {
+    if (isLogin()) {
       next()
     } else {
       next({path: '/login'})

@@ -31,8 +31,8 @@ export default {
   data () {
     return {
       workForm: {
-        username: '',
-        password: ''
+        username: 'binbobo',
+        password: '123456'
       },
       workFormRules: {
         username: [
@@ -49,8 +49,9 @@ export default {
       this.$refs[name].validate((valid) => {
         if (valid) {
           login(this.workForm).then((data) => {
-            this.$Message.success('Success!')
-            this.$router.push({ path: '/' })
+            this.$Message.success('Login Success')
+            localStorage.setItem('isLogin', true)
+            this.$router.push('/')
           })
         } else {
           return false
@@ -63,6 +64,6 @@ export default {
 
 
 <style lang="scss">
-// 此处不能使用webpack.base.config中配置的alias  因为则不是js执行环境
+// 此处不能使用webpack.base.config中配置的alias  因为它不是js执行环境
 @import 'src/styles/login.scss';
 </style>

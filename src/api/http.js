@@ -12,6 +12,8 @@ axios.interceptors.request.use(config => {
 
 // 响应拦截器
 axios.interceptors.response.use(response => {
+  // 只接受响应状态码为200的响应
+
   // 成功访问到接口
   // console.log('server response: ', response)
 
@@ -30,7 +32,7 @@ axios.interceptors.response.use(response => {
       // 登陆cookie失效
       if (code === 401) {
         // redirect to login
-        (!/#\//.test(window.location.href)) && window.location.replace('/')
+        (!/#\/login$/.test(window.location.href)) && window.location.replace('/#/login')
       }
       // other code
     }
