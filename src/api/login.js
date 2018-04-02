@@ -17,3 +17,9 @@ export const login = (userinfo) => {
     data: userinfo
   })
 }
+
+export const heart = () => {
+  return request({
+    url: baseURL + '/api/common/heart'
+  })
+}

@@ -1,23 +1,28 @@
 <template>
   <div class="hello">
-    <h1>Welcome, {{ userinfo.name }}</h1>
+    <Button @click="logout" type="error">Logout</Button>
+    <router-link :to="{ path: 'profile' }">Profile</router-link>
+    <router-link :to="{ path: 'todo' }">Todo</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import {profile} from 'api/user'
+import {logout} from 'api/user'
 
 export default {
   name: 'HomePage',
   data () {
     return {
-      userinfo: {}
     }
   },
-  created () {
-    profile().then((userinfo) => {
-      this.userinfo = userinfo
-    })
+  methods: {
+    logout () {
+      logout().then(() => {
+        localStorage.removeItem('isLogin')
+        this.$router.push('/login')
+      })
+    }
   }
 }
 </script>

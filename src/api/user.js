@@ -7,3 +7,9 @@ export const profile = (userinfo) => {
     url: baseURL + '/api/users/profile'
   })
 }
+
+export const logout = (userinfo) => {
+  return request({
+    url: baseURL + '/api/users/logout'
+  })
+}

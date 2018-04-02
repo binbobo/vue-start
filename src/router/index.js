@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import {isLogin} from 'util'
 
 import HomePage from '@/components/HomePage'
 import Todo from '@/components/todo/ToDo'
 import Login from '@/components/login/login'
 import Register from '@/components/login/register'
+import Profile from '@/components/user/profile'
 
 Vue.use(Router)
 
@@ -13,7 +15,16 @@ const router = new Router({
     {
       path: '/',
       name: 'Home',
-      component: HomePage
+      component: HomePage,
+      children: [{
+        path: '/profile',
+        name: 'Profile',
+        component: Profile
+      }, {
+        path: '/todo',
+        name: 'Todo',
+        component: Todo
+      }]
     },
     {
       path: '/login',
@@ -25,11 +36,6 @@ const router = new Router({
       name: 'Register',
       component: Register
     },
-    {
-      path: '/todo',
-      name: 'Todo',
-      component: Todo
-    },
     // Redirect to the home route if any routes are unmatched
     {
       path: '*',
@@ -40,8 +46,6 @@ const router = new Router({
 
 // route white list
 const whiteList = ['Login', 'Register']
-
-const isLogin = () => !!localStorage.getItem('isLogin')
 
 // router Guards
 router.beforeEach((to, from, next) => {

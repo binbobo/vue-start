@@ -1,23 +1,17 @@
 <template>
   <div id="app">
-    <!-- <nav class="nav">
-      <ul class="menu-list">
-        <li> 
-          <router-link :to="{path: '/'}">HelloWorld</router-link>
-        </li>
-        <li> 
-          <router-link to="Todo">Todo</router-link>
-        </li>
-      </ul>
-    </nav> -->
-    <!-- <img src="./assets/logo.png"> -->
     <router-view/>
   </div>
 </template>
 
 <script>
+import {startHeart} from 'util'
+
 export default {
-  name: 'app'
+  name: 'app',
+  created () {
+    startHeart()
+  }
 }
 </script>
 

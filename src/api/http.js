@@ -31,6 +31,7 @@ axios.interceptors.response.use(response => {
     if (typeof code === 'number') {
       // 登陆cookie失效
       if (code === 401) {
+        localStorage.removeItem('isLogin');
         // redirect to login
         (!/#\/login$/.test(window.location.href)) && window.location.replace('/#/login')
       }
