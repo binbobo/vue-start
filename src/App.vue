@@ -5,13 +5,8 @@
 </template>
 
 <script>
-import {startHeart} from 'util'
-
 export default {
-  name: 'app',
-  created () {
-    startHeart()
-  }
+  name: 'app'
 }
 </script>
 

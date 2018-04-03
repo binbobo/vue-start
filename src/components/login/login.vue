@@ -48,9 +48,9 @@ export default {
     handleSubmit (name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
-          login(this.workForm).then((data) => {
+          login(this.workForm).then((user) => {
             this.$Message.success('Login Success')
-            localStorage.setItem('isLogin', true)
+            this.$store.commit('LOGIN_IN', user)
             this.$router.push('/')
           })
         } else {

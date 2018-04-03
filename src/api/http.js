@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {Message} from 'iview'
+import store from 'store'
 
 // 设置通用请求参数
 
@@ -31,7 +32,7 @@ axios.interceptors.response.use(response => {
     if (typeof code === 'number') {
       // 登陆cookie失效
       if (code === 401) {
-        localStorage.removeItem('isLogin');
+        store.commit('LOGIN_OUT');
         // redirect to login
         (!/#\/login$/.test(window.location.href)) && window.location.replace('/#/login')
       }

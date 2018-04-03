@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import {isLogin} from 'util'
+import {isLogin, getLoginUser} from 'util'
+import store from 'store'
 
 import HomePage from '@/components/HomePage'
 import Todo from '@/components/todo/ToDo'
@@ -52,11 +53,14 @@ router.beforeEach((to, from, next) => {
   if (whiteList.includes(to.name)) {
     next()
   } else {
+    console.log(isLogin())
     // 判断是否登录
     if (isLogin()) {
+      store.commit('LOGIN_IN', getLoginUser())
       next()
     } else {
-      next({path: '/login'})
+      store.commit('LOGIN_OUT')
+      next('/login')
     }
   }
 })
