@@ -1,6 +1,7 @@
 const state = {
   isLogin: false,
-  loginUser: null
+  loginUser: null,
+  isCollapsed: false
 }
 
 const mutations = {
@@ -13,6 +14,9 @@ const mutations = {
     state.isLogin = false
     state.loginUser = null
     localStorage.removeItem('vue-start.loginUser')
+  },
+  TOGGLE_COLLAPSED (state) {
+    state.isCollapsed = !state.isCollapsed
   }
 }
 

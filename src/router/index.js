@@ -11,22 +11,26 @@ import Profile from '@/components/user/profile'
 
 Vue.use(Router)
 
+export const siderBarMenuRoutes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: HomePage,
+    children: [{
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
+    }, {
+      path: '/todo',
+      name: 'Todo',
+      component: Todo
+    }]
+  }
+]
+
 const router = new Router({
   routes: [
-    {
-      path: '/',
-      name: 'Home',
-      component: HomePage,
-      children: [{
-        path: '/profile',
-        name: 'Profile',
-        component: Profile
-      }, {
-        path: '/todo',
-        name: 'Todo',
-        component: Todo
-      }]
-    },
+    ...siderBarMenuRoutes,
     {
       path: '/login',
       name: 'Login',
@@ -53,7 +57,6 @@ router.beforeEach((to, from, next) => {
   if (whiteList.includes(to.name)) {
     next()
   } else {
-    console.log(isLogin())
     // 判断是否登录
     if (isLogin()) {
       store.commit('LOGIN_IN', getLoginUser())

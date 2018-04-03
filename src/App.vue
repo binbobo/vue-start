@@ -27,55 +27,7 @@ a {
 
 
 <style lang="scss">
-$navHeight: 30px;
-
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: $navHeight;
-}
-
-/* 导航菜单样式 */
-.nav {
-  width: 100%;
-  height: $navHeight;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  text-align: left;
-
-  .menu-list {
-    padding-left:24px;
-    border-bottom: 1px solid #fafafa;
-
-    li {
-      display: inline-block;
-      margin: auto 3px;
-      line-height: 30px;
-
-      a {
-        color:#777;
-        font-weight: bold;
-
-        display: inline-block;
-        width: 100%;
-        height: 27px;
-
-        &:hover {
-          color:#777;
-        }
-
-        &.router-link-exact-active {
-          border-bottom: 3px solid #4285f4;
-          color: #4285f4;
-        }
-      }
-    }
-  }
+  height: 100%;
 }
 </style>

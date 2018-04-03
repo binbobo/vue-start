@@ -30,6 +30,8 @@ module.exports = {
       'api': resolve('src/api'),
       'util': resolve('src/utils'),
       'store': resolve('src/store'),
+      'router': resolve('src/router'),
+      'components': resolve('src/components'),
     }
   },
   module: {
